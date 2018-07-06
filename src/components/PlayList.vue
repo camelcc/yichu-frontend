@@ -4,7 +4,7 @@
         <div v-if="video.type == 'video'">
             <p>{{ video.description }}</p>
             <video controls v-bind:poster="video.thumbnail" v-bind:src="video.url" width="720px"></video>
-            <a :href="'yichu://video/' + urlScheme() ">Open App</a>
+            <a :href="'yichu://video;data?' + urlScheme() ">Open App</a>
         </div>
     </div>
 </template>
@@ -17,7 +17,9 @@ export default {
   },
   methods: {
       urlScheme() {
-          return btoa(unescape(encodeURIComponent(JSON.stringify(this.video))));
+          return Object.keys(this.video).map(k => 
+              encodeURIComponent(k) + '=' + btoa(unescape(encodeURIComponent(this.video[k])))
+          ).join('&')
       }
   }
 }
