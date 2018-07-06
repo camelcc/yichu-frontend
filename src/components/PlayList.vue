@@ -16,11 +16,11 @@ export default {
     video: Object
   },
   methods: {
-      urlScheme() {
-          return Object.keys(this.video).map(k => 
-              encodeURIComponent(k) + '=' + btoa(unescape(encodeURIComponent(this.video[k])))
-          ).join('&')
-      }
+    urlScheme () {
+      return Object.keys(this.video).map(k =>
+        encodeURIComponent(k) + '=' + btoa(unescape(encodeURIComponent(this.video[k])))
+      ).join('&')
+    }
   }
 }
 </script>
