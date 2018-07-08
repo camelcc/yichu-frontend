@@ -1,11 +1,14 @@
 <template>
-    <div>
-        <p v-if="video.type != 'video'">目前不支持视频列表解析</p>
-        <div v-if="video.type == 'video'">
-            <p>{{ video.description }}</p>
-            <video controls v-bind:poster="video.thumbnail" v-bind:src="video.url" width="720px"></video>
-            <a :href="'yichu://video;data?' + urlScheme() ">Open App</a>
-        </div>
+    <div class="center-align">
+      <p class="orange-text text-darken-4" v-if="video.type != 'video'">不支持解析播放列表</p>
+      <div v-if="video.type == 'video'">
+        <video class="responsive-video" controls>
+          <source v-bind:poster="video.thumbnail" v-bind:src="video.url" type="video/mp4"/>
+        </video>
+        <p>
+        <a :href="'yichu://video;data?' + urlScheme() ">Open App</a>
+        </p>
+      </div>
     </div>
 </template>
 
