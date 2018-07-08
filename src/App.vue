@@ -81,6 +81,10 @@ export default {
 
 @import 'src/assets/theme.scss';
 
+#app {
+  margin-bottom: 1rem;
+}
+
 #youtube_link {
   display: flex;
   margin-top: 1rem;
