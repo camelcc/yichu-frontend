@@ -27,12 +27,14 @@
       <PlayList v-if="parsed" v-bind:video="videoData"/>
       <p id="parse_error" class="grey-text text-lighten-1 center-align" v-if="error">出错了呢: <br/> {{ error }}</p>
     </div>
+    <a ref="add_desk" onclick="M.toast({html: '点击 <span class=&quot;light-blue-text text-lighten-4&quot;>分享 -> 添加到桌面</span> 即可保存此 App'})" class="btn hide">Toast!</a>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import PlayList from './components/PlayList.vue'
+import Common from '@/components/common.js'
 
 export default {
   data () {
@@ -72,6 +74,11 @@ export default {
   },
   components: {
     PlayList
+  },
+  mounted () {
+    if (Common.isiOS()) {
+      this.$refs.add_desk.click()
+    }
   }
 }
 
